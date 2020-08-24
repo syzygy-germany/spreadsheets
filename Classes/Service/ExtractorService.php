@@ -129,7 +129,7 @@ class ExtractorService
             }
 
             $rowsToRepeatAtTop = $sheet->getPageSetup()->getRowsToRepeatAtTop();
-            $range = 'A1:' . $sheet->getHighestColumn() . ($rowsToRepeatAtTop[1] + 1);
+            $range = 'A1:' . $sheet->getHighestColumn() . $rowsToRepeatAtTop[1];
             return $this->rangeToCellArray($range, true);
         } catch (SpreadsheetException $e) {
             // sheet or range of cells couldn't be loaded
