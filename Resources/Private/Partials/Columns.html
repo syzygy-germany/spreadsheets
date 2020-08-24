@@ -2,8 +2,16 @@
 
 <f:section name="Main">
 	<f:for each="{data}" key="column" as="value" iteration="columnIterator">
-		<f:render partial="Cell" section="Main"
-				  arguments="{cell: value, row: row, column: column, rowIterator: rowIterator, columnIterator: columnIterator}"/>
+        <f:if condition="{isTableHead} == true">
+            <f:then>
+                <f:render partial="HeaderCell" section="Main"
+                          arguments="{cell: value, row: row, column: column, rowIterator: rowIterator, columnIterator: columnIterator}"/>
+            </f:then>
+            <f:else>
+                <f:render partial="Cell" section="Main"
+                          arguments="{cell: value, row: row, column: column, rowIterator: rowIterator, columnIterator: columnIterator}"/>
+            </f:else>
+        </f:if>
 	</f:for>
 </f:section>
 
