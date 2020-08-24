@@ -9,19 +9,21 @@
 				<f:if condition="{spreadsheet.headData}">
 					<thead>
 					<f:for each="{spreadsheet.headData}" key="row" as="rowData" iteration="rowIterator">
-						<th>
+                        <f:variable name="isTableHead" value="true"/>
+						<tr>
 							<f:render partial="Columns" section="Main"
-									  arguments="{data: rowData, row: row, rowIterator: rowIterator}"/>
-						</th>
+									  arguments="{data: rowData, row: row, rowIterator: rowIterator, isTableHead: isTableHead}"/>
+						</tr>
 					</f:for>
 					</thead>
 				</f:if>
 				<f:if condition="{spreadsheet.bodyData}">
 					<tbody>
 					<f:for each="{spreadsheet.bodyData}" key="row" as="rowData" iteration="rowIterator">
+                        <f:variable name="isTableHead" value="false"/>
 						<tr>
 							<f:render partial="Columns" section="Main"
-									  arguments="{data: rowData, row: row, rowIterator: rowIterator}"/>
+									  arguments="{data: rowData, row: row, rowIterator: rowIterator, isTablhead: isTableHead}"/>
 						</tr>
 					</f:for>
 					</tbody>
